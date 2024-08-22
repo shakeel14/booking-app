@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Spatie\ModelStatus\Events\StatusUpdated;
-Pusher
 
 class BookingStatusConfirmed
 {
@@ -32,10 +31,10 @@ class BookingStatusConfirmed
             if ($this->booking->status == 'confirmed') {
                
                   $pusher = new Pusher(
-                    Config::get('connection.puser.key'),
-                    Config::get('connection.puser.secret'),
-                    Config::get('connection.puser.app_id'),
-                    Config::get('connection.puser.options')
+                    Config::get('app.connections.pusher.key'),
+                    Config::get('app.connections.pusher.secret'),
+                    Config::get('app.connections.pusher.app_id'),
+                    Config::get('app.connections.pusher.options')
                   );
                 
                   $data['message'] = 'Your booking has been confirmed';
